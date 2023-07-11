@@ -1,0 +1,25 @@
+From f9bc1e4906c9610a1cec8034bdb1a5f4e8fc132f Mon Sep 17 00:00:00 2001
+From: boulevard-h <1549819758@qq.com>
+Date: Tue, 11 Jul 2023 16:46:42 +0800
+Subject: [PATCH] add -no-pie for arping_test_LDFLAGS
+
+---
+ src/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index cb16ab2..47221f7 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -15,4 +15,5 @@ fuzz_pingip_LDADD = $(LIBOBJS)
+ TESTS=arping_test
+ check_PROGRAMS=arping_test
+ arping_test_SOURCES=arping.c arping_test.c unix.c mock_libpcap.c mock_libnet.c
+-arping_test_LDADD=$(LIBOBJS) -lcheck -lpthread -lsubunit
+\ No newline at end of file
++arping_test_LDADD=$(LIBOBJS) -lcheck -lpthread -lsubunit
++arping_test_LDFLAGS=-no-pie
+\ No newline at end of file
+-- 
+2.33.1
+
